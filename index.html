@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mawar Glow + Tangkai</title>
+  <style>
+    body {
+      background: radial-gradient(circle, #0a0a0a, #000);
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .plant {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: bloom 3s ease-out forwards;
+    }
+
+    .rose {
+      position: relative;
+      width: 150px;
+      height: 150px;
+    }
+
+    .petal {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at center, #ff4d6d, #c9184a);
+      border-radius: 50% 50% 0 0;
+      transform: scale(0);
+      opacity: 0;
+      box-shadow: 0 0 20px #ff4d6d;
+      animation: petalGrow 2s forwards ease-out;
+    }
+
+    .petal:nth-child(1) {
+      top: 0;
+      left: 25px;
+      transform-origin: bottom center;
+      animation-delay: 0.3s;
+    }
+
+    .petal:nth-child(2) {
+      top: 25px;
+      left: -10px;
+      transform: rotate(-45deg);
+      transform-origin: right bottom;
+      animation-delay: 0.6s;
+    }
+
+    .petal:nth-child(3) {
+      top: 25px;
+      right: -10px;
+      transform: rotate(45deg);
+      transform-origin: left bottom;
+      animation-delay: 0.9s;
+    }
+
+    .petal:nth-child(4) {
+      top: 60px;
+      left: 25px;
+      transform: rotate(0deg);
+      transform-origin: top center;
+      animation-delay: 1.2s;
+    }
+
+    .center {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #a4133c;
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      box-shadow: 0 0 15px #ff4d6d;
+      animation: centerBloom 2s 1.5s forwards ease-out;
+    }
+
+    .stem {
+      width: 8px;
+      height: 200px;
+      background: linear-gradient(to bottom, #4caf50, #2e7d32);
+      margin-top: -20px;
+      position: relative;
+      border-radius: 4px;
+      box-shadow: 0 0 10px #4caf50;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 40px;
+      height: 20px;
+      background: #2e7d32;
+      border-radius: 50% 50% 50% 0;
+      top: 50px;
+      box-shadow: 0 0 5px #2e7d32;
+    }
+
+    .leaf.left {
+      left: -35px;
+      transform: rotate(-30deg);
+    }
+
+    .leaf.right {
+      right: -35px;
+      transform: rotate(30deg);
+      border-radius: 50% 50% 0 50%;
+    }
+
+    /* Animations */
+    @keyframes petalGrow {
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes centerBloom {
+      to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes bloom {
+      0% { transform: scale(0.8); }
+      100% { transform: scale(1); }
+    }
+
+    /* Optional: Glow pulse */
+    .plant:hover .petal,
+    .plant:hover .center {
+      animation: glowPulse 1.5s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from {
+        box-shadow: 0 0 10px #ff4d6d;
+      }
+      to {
+        box-shadow: 0 0 25px #ff4d6d;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="plant">
+    <div class="rose">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="center"></div>
+    </div>
+    <div class="stem">
+      <div class="leaf left"></div>
+      <div class="leaf right"></div>
+    </div>
+  </div>
+</body>
+</html>
